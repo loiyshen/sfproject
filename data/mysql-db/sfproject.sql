@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-10-19 11:49:17
+-- Generation Time: 2015-10-19 12:16:50
 -- 服务器版本： 5.6.26
 -- PHP Version: 5.6.12
 
@@ -67,7 +67,8 @@ ALTER TABLE `admin`
 -- Indexes for table `post`
 --
 ALTER TABLE `post`
-  ADD PRIMARY KEY (`post_id`);
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `fk_post_admin_id` (`admin_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -83,6 +84,16 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `post`
   MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '文章ID';
+--
+-- 限制导出的表
+--
+
+--
+-- 限制表 `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `fk_post_admin_id` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
