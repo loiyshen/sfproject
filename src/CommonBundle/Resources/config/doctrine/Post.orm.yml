@@ -1,0 +1,48 @@
+CommonBundle\Entity\Post:
+    type: entity
+    table: post
+    id:
+        postId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: '文章ID'
+            id: true
+            column: post_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 256
+            fixed: false
+            comment: '标题'
+        content:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            comment: 内容
+        adminId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 发布管理员
+            column: admin_id
+        createdAt:
+            type: datetime
+            nullable: false
+            comment: 创建时间
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: false
+            comment: 更新时间
+            column: updated_at
+        deletedAt:
+            type: datetime
+            nullable: true
+            comment: '删除时间'
+            column: deleted_at
+    lifecycleCallbacks: {  }

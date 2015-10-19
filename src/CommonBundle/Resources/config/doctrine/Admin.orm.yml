@@ -1,0 +1,52 @@
+CommonBundle\Entity\Admin:
+    type: entity
+    table: admin
+    id:
+        adminId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ID
+            id: true
+            column: admin_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        account:
+            type: string
+            nullable: false
+            length: 256
+            fixed: false
+            comment: 账号
+        password:
+            type: string
+            nullable: false
+            length: 256
+            fixed: false
+            comment: '密码'
+        nickname:
+            type: string
+            nullable: false
+            length: 256
+            fixed: false
+            comment: 昵称
+        role:
+            type: boolean
+            nullable: false
+            comment: 权限
+        createdAt:
+            type: datetime
+            nullable: false
+            comment: 创建时间
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: false
+            comment: 更新时间
+            column: updated_at
+        deletedAt:
+            type: datetime
+            nullable: true
+            comment: '删除时间'
+            column: deleted_at
+    lifecycleCallbacks: {  }
