@@ -13,12 +13,12 @@ $loader = new ApcClassLoader('sf2', $loader);
 $loader->register(true);
 */
 
-require_once __DIR__.'/../../app/AppKernel.php';
-//require_once __DIR__.'/../../app/AppCache.php';
+require_once __DIR__.'/../../app/AdminKernel.php';
+//require_once __DIR__.'/../../app/AdminCache.php';
 
-$kernel = new AppKernel('prod', false);
+$kernel = new AdminKernel('admin_prod', false);
 $kernel->loadClassCache();
-//$kernel = new AppCache($kernel);
+//$kernel = new AdminCache($kernel);
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();

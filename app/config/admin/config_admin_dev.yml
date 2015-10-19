@@ -1,5 +1,5 @@
 imports:
-    - { resource: config.yml }
+    - { resource: config_admin.yml }
 
 parameters:
     database_driver: pdo_mysql
@@ -9,9 +9,11 @@ parameters:
     database_user: dev
     database_password: dev12345
 
-#framework:
-#    validation:
-#        cache: apc
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/admin/routing_admin_dev.yml"
+        strict_requirements: true
+    profiler: { only_exceptions: false }
 
 # Doctrine Configuration
 doctrine:
@@ -27,13 +29,27 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+# Web Profiler Configuration
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
+
+# Monolog Configuration
 monolog:
     handlers:
         main:
-            type:         fingers_crossed
-            action_level: error
-            handler:      nested
-        nested:
             type:  stream
             path:  "%kernel.logs_dir%/%kernel.environment%.log"
             level: debug
+        firephp:
+            type:  firephp
+            level: info
+        chromephp:
+            type:  chromephp
+            level: info
+
+assetic:
+    use_controller: true
+
+swiftmailer:
+    disable_delivery: true

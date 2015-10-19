@@ -1,0 +1,6 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:index }
+admin_hello:
+    path:     /hello/{name}
+    defaults: { _controller: AdminBundle:Default:hello }

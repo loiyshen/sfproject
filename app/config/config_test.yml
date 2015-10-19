@@ -1,5 +1,13 @@
 imports:
-    - { resource: config_dev.yml }
+    - { resource: config.yml }
+
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: 3306
+    database_name: sfproject
+    database_user: dev
+    database_password: dev12345
 
 framework:
     test: ~
@@ -8,9 +16,38 @@ framework:
     profiler:
         collect: false
 
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_mapping: true
+
+# Web Profiler Configuration
 web_profiler:
     toolbar: false
     intercept_redirects: false
+
+# Monolog Configuration
+monolog:
+    handlers:
+        main:
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        firephp:
+            type:  firephp
+            level: info
+        chromephp:
+            type:  chromephp
+            level: info
 
 swiftmailer:
     disable_delivery: true
