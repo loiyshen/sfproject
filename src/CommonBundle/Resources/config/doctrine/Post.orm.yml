@@ -1,6 +1,10 @@
 CommonBundle\Entity\Post:
     type: entity
     table: post
+    indexes:
+        fk_post_admin_id:
+            columns:
+                - admin_id
     id:
         postId:
             type: integer
@@ -24,12 +28,6 @@ CommonBundle\Entity\Post:
             length: 65535
             fixed: false
             comment: 内容
-        adminId:
-            type: integer
-            nullable: false
-            unsigned: false
-            comment: 发布管理员
-            column: admin_id
         createdAt:
             type: datetime
             nullable: false
@@ -45,4 +43,14 @@ CommonBundle\Entity\Post:
             nullable: true
             comment: '删除时间'
             column: deleted_at
+    manyToOne:
+        admin:
+            targetEntity: Admin
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                admin_id:
+                    referencedColumnName: admin_id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

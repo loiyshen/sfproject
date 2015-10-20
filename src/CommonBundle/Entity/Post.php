@@ -25,11 +25,6 @@ class Post
     private $content;
 
     /**
-     * @var integer
-     */
-    private $adminId;
-
-    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -43,6 +38,11 @@ class Post
      * @var \DateTime
      */
     private $deletedAt;
+
+    /**
+     * @var \CommonBundle\Entity\Admin
+     */
+    private $admin;
 
 
     /**
@@ -99,29 +99,6 @@ class Post
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set adminId
-     *
-     * @param integer $adminId
-     * @return Post
-     */
-    public function setAdminId($adminId)
-    {
-        $this->adminId = $adminId;
-    
-        return $this;
-    }
-
-    /**
-     * Get adminId
-     *
-     * @return integer 
-     */
-    public function getAdminId()
-    {
-        return $this->adminId;
     }
 
     /**
@@ -191,5 +168,28 @@ class Post
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    /**
+     * Set admin
+     *
+     * @param \CommonBundle\Entity\Admin $admin
+     * @return Post
+     */
+    public function setAdmin(\CommonBundle\Entity\Admin $admin = null)
+    {
+        $this->admin = $admin;
+    
+        return $this;
+    }
+
+    /**
+     * Get admin
+     *
+     * @return \CommonBundle\Entity\Admin 
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
     }
 }
