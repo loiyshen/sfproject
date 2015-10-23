@@ -1,4 +1,5 @@
 CommonBundle\Entity\Post:
+    repositoryClass: CommonBundle\EntityRepository\PostRepository
     type: entity
     table: post
     indexes:
@@ -27,16 +28,16 @@ CommonBundle\Entity\Post:
             nullable: false
             length: 65535
             fixed: false
-            comment: 内容
+            comment: '内容'
         createdAt:
             type: datetime
             nullable: false
-            comment: 创建时间
+            comment: '创建时间'
             column: created_at
         updatedAt:
             type: datetime
             nullable: false
-            comment: 更新时间
+            comment: '更新时间'
             column: updated_at
         deletedAt:
             type: datetime

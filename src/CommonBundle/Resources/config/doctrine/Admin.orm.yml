@@ -1,4 +1,5 @@
 CommonBundle\Entity\Admin:
+    repositoryClass: CommonBundle\EntityRepository\AdminRepository
     type: entity
     table: admin
     id:
@@ -17,7 +18,7 @@ CommonBundle\Entity\Admin:
             nullable: false
             length: 256
             fixed: false
-            comment: 账号
+            comment: '账号'
         password:
             type: string
             nullable: false
@@ -29,20 +30,20 @@ CommonBundle\Entity\Admin:
             nullable: false
             length: 256
             fixed: false
-            comment: 昵称
+            comment: '昵称'
         role:
             type: boolean
             nullable: false
-            comment: 权限
+            comment: '权限'
         createdAt:
             type: datetime
             nullable: false
-            comment: 创建时间
+            comment: '创建时间'
             column: created_at
         updatedAt:
             type: datetime
             nullable: false
-            comment: 更新时间
+            comment: '更新时间'
             column: updated_at
         deletedAt:
             type: datetime

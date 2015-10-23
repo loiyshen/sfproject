@@ -11,7 +11,7 @@ use Doctrine\ORM\Query;
 class AbstractRepository extends EntityRepository
 {
 
-    const ENTITY_BUNDLE = 'CommonBundle';
+    const ENTITY_BUNDLE = "CommonBundle";
 
     protected $container;
     protected $nowDate;

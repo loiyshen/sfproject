@@ -1,6 +1,20 @@
-frontend_homepage:
-    path:     /
-    defaults: { _controller: FrontendBundle:Default:index }
-frontend_hello:
-    path:     /hello/{name}
-    defaults: { _controller: FrontendBundle:Default:hello }
+# ///// DefaultController //////////////////////////////
+#Frontend Homepage
+fe_homepage:
+    path:       /
+    defaults:   { _controller: FrontendBundle:Default:index }
+# ///// PostController //////////////////////////////
+#Listing Posts
+fe_post_list:
+    path:       /post/list/{page}
+    defaults:   { _controller: FrontendBundle:Post:list, page: 1 }
+    methods:  [GET]
+    requirements:
+        page:  \d+
+#Show a Post Detail
+fe_post_detail:
+    path:       /post/detail/{postId}
+    defaults:   { _controller: FrontendBundle:Post:detail }
+    methods:  [GET]
+    requirements:
+        postId:  \d+

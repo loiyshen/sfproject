@@ -1,19 +1,26 @@
 <?php
-
 namespace AdminBundle\Controller;
 
+/**
+ * 默认控制器，主要是常规通用的功能和画面
+ */
 class DefaultController extends AbstractController
 {
+    /**
+     * Show the homepage
+     * @return template
+     */
     public function indexAction()
     {
         return $this->render('AdminBundle:Default:index.html.twig');
     }
 
-    public function helloAction($name)
+    /**
+     * Admin Login
+     * @return template
+     */
+    public function loginAction()
     {
-        if($this->isGet()){
-            $zip = $this->getRequestParam('zip');
-        }
-        return $this->render('AdminBundle:Default:hello.html.twig', array('name' => $name, 'zip' => $zip));
+        return $this->render('AdminBundle:Default:login.html.twig');
     }
 }
