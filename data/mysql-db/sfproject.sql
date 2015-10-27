@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-10-19 12:16:50
+-- Generation Time: 2015-10-27 11:30:05
 -- 服务器版本： 5.6.26
 -- PHP Version: 5.6.12
 
@@ -29,13 +29,20 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `admin` (
   `admin_id` int(11) NOT NULL COMMENT 'ID',
   `account` varchar(256) NOT NULL COMMENT '账号',
-  `password` varchar(256) NOT NULL COMMENT '密码',
+  `passwd` varchar(256) NOT NULL COMMENT '密码',
   `nickname` varchar(256) NOT NULL COMMENT '昵称',
-  `role` tinyint(4) NOT NULL COMMENT '权限',
+  `role` varchar(32) NOT NULL COMMENT '权限',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '更新时间',
   `deleted_at` datetime DEFAULT NULL COMMENT '删除时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='管理员表';
+
+--
+-- 转存表中的数据 `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `account`, `passwd`, `nickname`, `role`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'admin', 'yc/SvLxTHE3qzRFOUGYGbZ2MFCGZjkuImbRmF4jxfJA=', 'Admin-123456', 'ROLE_SUPER_ADMIN', '2015-10-27 08:28:24', '2015-10-27 08:28:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -78,7 +85,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `post`
 --
