@@ -5,4 +5,5 @@ parameters:
     mailer_user: null
     mailer_password: null
     locale: en
-    secret: 56f170a6a2f1b30f484ddda83f2dffd0fa6672fa
+    secret: 9aa426da5e16d717055100f7becca6b02644d8c8
+    mcrypt_secret: 3JldE9mQ291cGFy0X3NlY3JldF9rZXkx

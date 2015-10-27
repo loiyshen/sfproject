@@ -1,0 +1,29 @@
+{# app/Resources/views/security/login.html.twig #}
+{# ... you will probably extends your base template, like base.html.twig #}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<style>
+    .login_form{width:400px; height: 200px; padding: 20px; margin: 50px auto 20px; background: #EFEFEF; border: #CCC 1px solid;}
+    .login_row{height: 30px; line-height: 30px; margin: 10px 0px;}
+</style>
+<form id="loginForm" class="login_form" action="{{path('adm_login_check')}}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('_csrf_token_id') }}" />
+    <div class="login_row">
+        {{ form_label(form["account"]) }}
+        {{ form_widget(form["account"], {"attr": {"class": "form_account", "placeholder":"用户名"}}) }}
+    </div>
+    <div class="login_row">
+        {{ form_label(form["passwd"]) }}
+        {{ form_widget(form["passwd"], {"attr": {"class": "form_passwd", "placeholder":"密码"}}) }}
+    </div>
+    <div class="login_row">
+        {{ form_widget(form["login_submit"], {"attr": {"class": "form_submit"}}) }}
+    </div>
+    <div class="login_row">
+        {{ form_widget(form["remember_me"]) }}
+        {{ form_label(form["remember_me"]) }}
+    </div>
+</form>

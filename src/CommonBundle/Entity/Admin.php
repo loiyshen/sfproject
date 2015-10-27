@@ -2,8 +2,6 @@
 
 namespace CommonBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Admin
  */
@@ -22,7 +20,7 @@ class Admin
     /**
      * @var string
      */
-    private $password;
+    private $passwd;
 
     /**
      * @var string
@@ -30,7 +28,7 @@ class Admin
     private $nickname;
 
     /**
-     * @var boolean
+     * @var string
      */
     private $role;
 
@@ -48,8 +46,7 @@ class Admin
      * @var \DateTime
      */
     private $deletedAt;
-
-
+    
     /**
      * Get adminId
      *
@@ -86,12 +83,12 @@ class Admin
     /**
      * Set password
      *
-     * @param string $password
+     * @param string $passwd
      * @return Admin
      */
-    public function setPassword($password)
+    public function setPasswd($passwd)
     {
-        $this->password = $password;
+        $this->passwd = $passwd;
     
         return $this;
     }
@@ -101,9 +98,9 @@ class Admin
      *
      * @return string 
      */
-    public function getPassword()
+    public function getPasswd()
     {
-        return $this->password;
+        return $this->passwd;
     }
 
     /**
@@ -132,7 +129,7 @@ class Admin
     /**
      * Set role
      *
-     * @param boolean $role
+     * @param string $role
      * @return Admin
      */
     public function setRole($role)
@@ -145,7 +142,7 @@ class Admin
     /**
      * Get role
      *
-     * @return boolean 
+     * @return string 
      */
     public function getRole()
     {

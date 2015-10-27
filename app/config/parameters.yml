@@ -1,8 +1,3 @@
 # This file is auto-generated during the composer install
-parameters:
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
-    locale: en
-    secret: 56f170a6a2f1b30f484ddda83f2dffd0fa6672fa
+imports:
+    - { resource: admin\parameters_admin.yml }

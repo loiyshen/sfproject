@@ -1,24 +1,110 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
+    #!! 密码的加密算法
+    encoders:
+        CommonBundle\Entity\User:
+            algorithm: sha512
+            encode_as_base64: true
+            iterations: 100
 
+    #!! 安全验证提供者
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        db_provider:
+            entity:
+                class: CommonBundle:User
 
+    #!! 防火墙
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
+        # Disables authentication for the _profiler and _wdt for [dev] environment
+        # Disables authentication for assets (static files), and you can edit it adapt to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
+        # Disables authentication for login page
+        login:
+            pattern:  ^/login$
+            security: false
 
-            # http_basic: ~
+        #!! The main firewall
+        default:
             # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+            pattern: ^/
+            context: db_provider
+            
+            #!! Form Login security configuration
+            form_login:
+                ### The user is redirected here when they need to log in
+                login_path: adm_login
+                ### Submit the login form here
+                check_path: adm_login_check
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+                ### Field names for the username and password fields
+                username_parameter: form[account]
+                password_parameter: form[passwd]
+
+                ### Login success redirecting options
+                always_use_default_target_path: false
+                default_target_path: adm_homepage
+                #target_path_parameter: _success_redirect_url
+                #success_handler: login_success_service_id
+                use_referer: true
+                #// if true, forward the user to the login form instead of redirecting
+                use_forward: false
+
+                ### login failure redirecting options
+                failure_path:    /foo
+                failure_forward: false
+                #failure_path_parameter: _failure_redirect_url
+                #failure_handler: login_failure_service_id
+                
+                ### csrf token options
+                csrf_provider: form.csrf_provider
+                csrf_parameter: _csrf_token
+                intention: _csrf_token_id
+                
+                ### by default, the login form *must* be a POST, not a GET
+                post_only: true
+                
+                ### remember me
+                remember_me: true
+
+            #!! Logout security configuration
+            logout:
+                path:  adm_logout
+                target: adm_login
+                invalidate_session: true
+                #success_handler: some.service.id
+
+            #!! Remember-Me security configuration
+            remember_me:
+                #// the name of token provider. (default value: null)
+                token_provider: null
+                #// the secret key for cookie encryption
+                key: "%secret%"
+                #// The name of cookie, e.g. [SITE_NAME]_REMEMBER_ME
+                name: SF_REMEMBER_ME
+                #// the cookie lifetime, 14 days in seconds
+                lifetime: 259200
+                #// the path of cookie
+                path: /
+                #// Defaults to the current domain from $_SERVER
+                domain:  ~
+                #// true for HTTPS
+                secure: false
+                httponly: true
+                always_remember_me: false
+                remember_me_parameter: form[remember_me]
+
+    #!! 角色分级
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN]
+
+    #!! 访问控制
+    access_control:
+        - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/post, roles: ROLE_ADMIN }
+        - { path: ^/$, roles: ROLE_ADMIN }
+

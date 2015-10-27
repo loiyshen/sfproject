@@ -1,4 +1,5 @@
 <?php
+
 namespace AdminBundle\Controller;
 
 /**

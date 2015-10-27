@@ -1,46 +1,54 @@
 # ///// DefaultController //////////////////////////////
-#Admin Homepage
+# Admin Homepage
 adm_homepage:
     path:       /
     defaults:   { _controller: AdminBundle:Default:index }
     methods:  [GET]
+# ///// SecurityController //////////////////////////////
+# Login Page
 adm_login:
     path:       /login
-    defaults:   { _controller: AdminBundle:Default:login }
-    methods:  [GET]
+    defaults:   { _controller: AdminBundle:Security:login }
+    methods:  [GET, POST]
+# Login Check for security
+adm_login_check:
+    path:       /login_check
+# Logout for security
+adm_logout:
+    path:       /logout
 # ///// AdminController //////////////////////////////
-#Listing Admin Users
+# Listing Admin Users
 adm_admin_list:
     path:       /admin/list/{page}
     defaults:   { _controller: AdminBundle:Admin:list, page: 1 }
     methods:  [GET]
     requirements:
         page:  \d+
-#Create an Admin User
+# Create an Admin User
 adm_admin_add:
     path:       /admin/add
     defaults:   { _controller: AdminBundle:Admin:add }
     methods:  [GET]
-#Edit an Admin User
+# Edit an Admin User
 adm_admin_edit:
     path:       /admin/edit/{adminId}
     defaults:   { _controller: AdminBundle:Admin:edit }
     methods:  [GET]
     requirements:
         adminId:  \d+
-#Save an Admin User to DB
+# Save an Admin User to DB
 adm_admin_save:
     path:       /admin/save/
     defaults:   { _controller: AdminBundle:Admin:save }
     methods:  [POST]
-#Result for add|edit Admin User
+# Result for add|edit Admin User
 adm_admin_result:
     path:       /admin/result/{actionType}
     defaults:   { _controller: AdminBundle:Admin:result }
     methods:  [GET]
     requirements:
-        actionType:  [add, edit]
-#Delete an Admin User
+        actionType:  add|edit
+# Delete an Admin User
 adm_admin_delete:
     path:       /admin/delete/{adminId}
     defaults:   { _controller: AdminBundle:Admin:delete }
@@ -48,45 +56,45 @@ adm_admin_delete:
     requirements:
         adminId:  \d+
 # ///// PostController //////////////////////////////
-#Listing Posts
+# Listing Posts
 adm_post_list:
     path:       /post/list/{page}
     defaults:   { _controller: AdminBundle:Post:list, page: 1 }
     methods:  [GET]
     requirements:
         page:  \d+
-#Show a Post Detail
+# Show a Post Detail
 adm_post_detail:
     path:       /post/detail/{postId}
     defaults:   { _controller: AdminBundle:Post:detail }
     methods:  [GET]
     requirements:
         postId:  \d+
-#Create a Post
+# Create a Post
 adm_post_add:
     path:       /post/add
     defaults:   { _controller: AdminBundle:Post:add }
     methods:  [GET]
-#Edit a Post
+# Edit a Post
 adm_post_edit:
     path:       /post/edit/{postId}
     defaults:   { _controller: AdminBundle:Post:edit }
     methods:  [GET]
     requirements:
         postId:  \d+
-#Save a Post to DB
+# Save a Post to DB
 adm_post_save:
     path:       /post/save/
     defaults:   { _controller: AdminBundle:Post:save }
     methods:  [POST]
-#Result for add|edit Post
+# Result for add|edit Post
 adm_post_result:
     path:       /post/result/{actionType}
     defaults:   { _controller: AdminBundle:Post:result }
     methods:  [GET]
     requirements:
-        actionType:  [add, edit]
-#Delete a Post
+        actionType:  add|edit
+# Delete a Post
 adm_post_delete:
     path:       /post/delete/{postId}
     defaults:   { _controller: AdminBundle:Post:delete }

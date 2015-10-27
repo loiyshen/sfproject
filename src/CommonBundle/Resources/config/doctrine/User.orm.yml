@@ -1,5 +1,5 @@
-CommonBundle\Entity\Admin:
-    repositoryClass: CommonBundle\EntityRepository\AdminRepository
+CommonBundle\Entity\User:
+    repositoryClass: CommonBundle\EntityRepository\UserRepository
     type: entity
     table: admin
     id:
