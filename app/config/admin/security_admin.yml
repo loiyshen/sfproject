@@ -51,24 +51,24 @@ security:
                 #target_path_parameter: _success_redirect_url
                 #success_handler: login_success_service_id
                 use_referer: true
-                #// if true, forward the user to the login form instead of redirecting
+                #// If true, forward the user to the login form instead of redirecting
                 use_forward: false
 
-                ### login failure redirecting options
-                failure_path:    /foo
+                ### Login failure redirecting options
+                #failure_path: 
                 failure_forward: false
                 #failure_path_parameter: _failure_redirect_url
                 #failure_handler: login_failure_service_id
                 
-                ### csrf token options
+                ### CSRF Token options
                 csrf_provider: form.csrf_provider
                 csrf_parameter: _csrf_token
                 intention: _csrf_token_id
                 
-                ### by default, the login form *must* be a POST, not a GET
+                ### By default, the login form *must* be a POST, not a GET
                 post_only: true
                 
-                ### remember me
+                ### Enables remember_me
                 remember_me: true
 
             #!! Logout security configuration
@@ -80,15 +80,15 @@ security:
 
             #!! Remember-Me security configuration
             remember_me:
-                #// the name of token provider. (default value: null)
+                #// The name of token provider. (default value: null)
                 token_provider: null
-                #// the secret key for cookie encryption
+                #// The secret key for cookie encryption
                 key: "%secret%"
                 #// The name of cookie, e.g. [SITE_NAME]_REMEMBER_ME
                 name: SF_REMEMBER_ME
-                #// the cookie lifetime, 14 days in seconds
-                lifetime: 259200
-                #// the path of cookie
+                #// The cookie lifetime, 7 days in seconds = 604800
+                lifetime: 604800
+                #// The path of cookie
                 path: /
                 #// Defaults to the current domain from $_SERVER
                 domain:  ~
