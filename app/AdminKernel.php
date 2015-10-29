@@ -33,4 +33,14 @@ class AdminKernel extends Kernel
     {
         $loader->load($this->getRootDir().'/config/admin/config_'.$this->getEnvironment().'.yml');
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     */
+    public function getName()
+    {
+        return 'Admin';
+    }
 }

@@ -18,10 +18,10 @@ class SecurityController extends AbstractController
     {
         $request = $this->getRequest();
         $formBuilder = $this->createFormBuilder(null, array( 'csrf_protection' => false ))
-                ->add('account', 'text',array( 'label'=>'用户名:', 'required'=>true ))
-                ->add('passwd', 'password',array( 'label'=>'密码:', 'required'=>true ))
-                ->add('remember_me', 'checkbox',array( 'label'=>'2周内自动登录' ,'required'=>false ))
-                ->add('login_submit', 'submit',array());
+                ->add('account', 'text',array( 'label'=>'Your Username', 'required'=>true ))
+                ->add('passwd', 'password',array( 'label'=>'Your Password', 'required'=>true ))
+                ->add('remember_me', 'checkbox',array( 'label'=>'Remember me in 2 weeks.' ,'required'=>false ))
+                ->add('login_submit', 'submit',array('label'=>'Login'));
         
         $form = $formBuilder->getForm();
         $session = $request->getSession();

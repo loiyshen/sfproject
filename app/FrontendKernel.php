@@ -33,4 +33,14 @@ class FrontendKernel extends Kernel
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+    
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     */
+    public function getName()
+    {
+        return 'Frontend';
+    }
 }

@@ -1,5 +1,16 @@
-<div>Welcome to the Admin Homepage.</div>
+{#
+@path: /src/AdminBundle/Resources/views/Default/index.html.twig
+@author: Loiy Shen <web@loiy.net>
+#}
+{% extends "AdminBundle::layout.html.twig" %}
 
-<div><a href="/login">Login</a></div>
+{% block title %}HomePage - Admin{% endblock %}
 
-<div><a href="/logout">Logout</a></div>
+
+{% block content %}
+    
+    <h1>The Home Page</h1>
+    <div><a href="/login">Login</a></div>
+    <div><a href="/logout">Logout</a></div>
+    
+{% endblock %}

@@ -1,29 +1,36 @@
-{# app/Resources/views/security/login.html.twig #}
-{# ... you will probably extends your base template, like base.html.twig #}
+{#
+@path: /src/AdminBundle/Resources/views/Security/login.html.twig
+@author: Loiy Shen <web@loiy.net>
+#}
+{% extends "AdminBundle::layout.html.twig" %}
+
+{% block title %}Login - Admin{% endblock %}
+{% block other_stylesheets %}
+<link rel="stylesheet" href="{{ asset('/static/css/login.css') }}" />
+{% endblock %}
+
+{% block content %}
+    
 
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-<style>
-    .login_form{width:400px; height: 200px; padding: 20px; margin: 50px auto 20px; background: #EFEFEF; border: #CCC 1px solid;}
-    .login_row{height: 30px; line-height: 30px; margin: 10px 0px;}
-</style>
-<form id="loginForm" class="login_form" action="{{path('adm_login_check')}}" method="post">
+
+
+
+<form class="form-login" action="{{path('adm_login_check')}}" method="post">
+    <h2>Please Login:</h2>
     <input type="hidden" name="_csrf_token" value="{{ csrf_token('_csrf_token_id') }}" />
-    <div class="login_row">
-        {{ form_label(form["account"]) }}
-        {{ form_widget(form["account"], {"attr": {"class": "form_account", "placeholder":"用户名"}}) }}
+    <div class="form-group">
+        {{ form_widget(form.account, {"attr": {"class": "form-control", "placeholder": form.account.vars.label}}) }}
+        {{ form_widget(form.passwd, {"attr": {"class": "form-control", "placeholder": form.passwd.vars.label}}) }}
     </div>
-    <div class="login_row">
-        {{ form_label(form["passwd"]) }}
-        {{ form_widget(form["passwd"], {"attr": {"class": "form_passwd", "placeholder":"密码"}}) }}
+    <div class="checkbox">
+        <label for="{{ form.remember_me.vars.id }}">{{ form_widget(form.remember_me) }} {{ form.remember_me.vars.label }}</label>
     </div>
-    <div class="login_row">
-        {{ form_widget(form["login_submit"], {"attr": {"class": "form_submit"}}) }}
-    </div>
-    <div class="login_row">
-        {{ form_widget(form["remember_me"]) }}
-        {{ form_label(form["remember_me"]) }}
+    <div class="form-group">
+        {{ form_widget(form.login_submit, {"attr": {"class": "btn btn-primary btn-lg btn-block"}}) }}
     </div>
 </form>
+{% endblock %}

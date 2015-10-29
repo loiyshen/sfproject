@@ -1,0 +1,49 @@
+{#
+@path: /src/AdminBundle/Resources/views/layout.html.twig
+@author: Loiy Shen <web@loiy.net>
+#}
+{% extends "::base.html.twig" %}
+
+{% block title %}Admin Layout Title{% endblock %}
+{% block meta_tags %}
+<meta name="Keywords" content="" />
+<meta name="description" content="" />
+{% endblock %}
+{% block common_stylesheets %}
+<link rel="stylesheet" href="{{ asset('/static/css/bootstrap.css') }}" />
+{% endblock %}
+{% block other_stylesheets %}{% endblock %}
+
+{% block common_javascripts %}
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="{{ asset('/static/js/html5shiv.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/static/js/respond.min.js') }}"></script>
+<![endif]-->
+
+<script type="text/javascript" src="{{ asset('/static/js/jquery-1.11.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/static/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+{% block other_javascripts %}{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <div class="header" id="header">
+        {% block header %}{% endblock %}
+    </div>
+
+    <div class="wrap">
+        <div class="sidebar">
+            {% block sidebar %}{% endblock %}
+        </div>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <div class="footer" id="header">
+        {% block footer %}{% endblock %}
+    </div>
+</div>
+{% endblock %}
+{% block footer_javascripts %}{% endblock %}
