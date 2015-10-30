@@ -12,5 +12,22 @@
     <h1>The Home Page</h1>
     <div><a href="/login">Login</a></div>
     <div><a href="/logout">Logout</a></div>
+    <h2>Client IP: {{ client_ip }}</h2>
+    <div style="color:red;">
+        <div>Login user from Token:</div> 
+        <div>{{ login_user.getId() }}</div>
+        <div>{{ login_user.getAccount() }}</div>
+        <div>{{ login_user.getPasswd() }}</div>
+        <div>{{ login_user.getNickname() }}</div>
+    </div>
+    
+    {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div style="color:green;">
+            <div>User from app.user ：</div>
+            <div>{{ app.user.getId() }}</div>
+            <div>{{ app.user.getAccount() }}</div>
+            <div>{{ app.user.getPasswd() }}</div>
+            <div>{{ app.user.getNickname() }}</div>
+    {% endif %}
     
 {% endblock %}

@@ -1,0 +1,7 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+#!! 系统服务配置
+services:
+    admin_login_success_handler:
+        class: AdminBundle\Services\AdminLoginSuccessHandler
+        arguments: [@service_container]

@@ -4,7 +4,7 @@ namespace CommonBundle\Entity;
 
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
-use CommonBundle\Utils\Mcrypt;
+use CommonBundle\Utils\McryptHelper;
 
 class User implements AdvancedUserInterface, \Serializable
 {
@@ -278,7 +278,7 @@ class User implements AdvancedUserInterface, \Serializable
     public function getPassword()
     {
         $encoder = new MessageDigestPasswordEncoder('sha512', true, 100);
-        $decryptPasswd = Mcrypt::_decrypt($this->getPasswd());
+        $decryptPasswd = McryptHelper::mcryptDecrypt($this->getPasswd());
         $passwd = $encoder->encodePassword($decryptPasswd, $this->getSalt());
         return $passwd;
     }
@@ -293,7 +293,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setPassword($passwd)
     {
-        return Mcrypt::_encrypt($passwd);
+        return McryptHelper::mcryptEncrypt($passwd);
     }
 
     public function eraseCredentials()

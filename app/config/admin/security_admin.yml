@@ -1,5 +1,6 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
+#!! 系统安全性配置
 security:
     #!! 密码的加密算法
     encoders:
@@ -33,7 +34,8 @@ security:
             # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
             pattern: ^/
             context: db_provider
-            
+            security: true
+
             #!! Form Login security configuration
             form_login:
                 ### The user is redirected here when they need to log in
@@ -49,7 +51,8 @@ security:
                 always_use_default_target_path: false
                 default_target_path: adm_homepage
                 #target_path_parameter: _success_redirect_url
-                #success_handler: login_success_service_id
+                #// Configuring this in the [services_admin.yml] file
+                success_handler: admin_login_success_handler
                 use_referer: true
                 #// If true, forward the user to the login form instead of redirecting
                 use_forward: false
