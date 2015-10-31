@@ -18,7 +18,7 @@ If unsure about meeting these requirements, download this demo application and b
 Installation
 ------------
 
-**STEP-1. Get Source Code:**
+1. Get Source Code:
 
 Clone or download this [sfproject](https://github.com/loiyshen/sfproject.git).
 
@@ -26,25 +26,25 @@ Clone or download this [sfproject](https://github.com/loiyshen/sfproject.git).
 $ git clone https://github.com/loiyshen/sfproject.git
 ```
 
-**STEP-2. Create Database:** 
+2. Create Database:
 
 The SQL files you need are under the folder `/data/mysql-db/`.
 
 The default Account/Password is: `admin/123456`, then you can login to the back-office.
 
-**STEP-3. Apache Configuration:**
+STEP-3. Apache Configuration:
 
 You need to add 2 virtual hosts to your `httpd-vhosts.conf` file.
 
 The content of configuration what you need in the `/data/apache-conf/httpd-vhosts.conf` file.
 
-**STEP-4. Add Local Hosts Records:**
+4. Add Local Hosts Records:
 
 Copy the content of `/data/hosts/hosts.txt` file, and paste it at the end of your local hosts file.
 
 The hosts file here `C:\Windows\System32\drivers\etc\hosts` in Win 7.
 
-**STEP-5. Run it:**
+5. Run it:
 Now, you visit the demo application: 
 
  - front-end:  `http://sf.dev.com` 
