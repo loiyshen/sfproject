@@ -2,7 +2,8 @@ SfProject
 ==========
 
 This "sfproject" is a simple demo application based on Symfony 2.3 framework.
-This demo application just shows you how a Symfony Application looks like, and how it works. It will not tell how to develop a Symfony application from scratch, But you can follow the recommended [Best Practices](http://symfony.com/doc/current/best_practices/index.html) to make it.
+This demo application just shows you how a Symfony Application looks like, and how it works. 
+It will not tell how to develop a Symfony application from scratch, But you can follow the recommended [Best Practices](http://symfony.com/doc/current/best_practices/index.html) to make it.
 
 
 Requirements
@@ -19,20 +20,17 @@ Installation
 ------------
 
 1. Get Source Code:
+    Clone or download this [sfproject](https://github.com/loiyshen/sfproject.git).
 
-Clone or download this [sfproject](https://github.com/loiyshen/sfproject.git).
-
-```bash
-$ git clone https://github.com/loiyshen/sfproject.git
-```
+    ```bash
+    $ git clone https://github.com/loiyshen/sfproject.git
+    ```
 
 2. Create Database:
+    The SQL files you need are under the folder `/data/mysql-db/`.
+    The default Account/Password is: `admin/123456`, then you can login to the back-office.
 
-The SQL files you need are under the folder `/data/mysql-db/`.
-
-The default Account/Password is: `admin/123456`, then you can login to the back-office.
-
-STEP-3. Apache Configuration:
+3. Apache Configuration:
 
 You need to add 2 virtual hosts to your `httpd-vhosts.conf` file.
 
