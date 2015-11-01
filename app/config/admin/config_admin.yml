@@ -2,6 +2,7 @@ imports:
     - { resource: parameters_admin.yml }
     - { resource: security_admin.yml }
     - { resource: services_admin.yml }
+    - { resource: const_vars.yml }
 
 framework:
     #esi:             ~

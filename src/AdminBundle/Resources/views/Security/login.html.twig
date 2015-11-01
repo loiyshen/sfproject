@@ -5,17 +5,8 @@
 {% extends "AdminBundle::layout.html.twig" %}
 
 {% block title %}Login - Admin{% endblock %}
-{% block other_stylesheets %}
-<link rel="stylesheet" href="{{ asset('/static/css/login.css') }}" />
-{% endblock %}
 
 {% block content %}
-
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
-
-
 
 
 <form class="form-login" action="{{path('adm_login_check')}}" method="post">
@@ -25,6 +16,11 @@
         {{ form_widget(form.account, {"attr": {"class": "form-control", "placeholder": form.account.vars.label}}) }}
         {{ form_widget(form.passwd, {"attr": {"class": "form-control", "placeholder": form.passwd.vars.label}}) }}
     </div>
+    {% if errMsg %}
+    <div class="form-group bg-warning">
+        <div class="text-danger errmsg">{{ errMsg }}</div>
+    </div>
+    {% endif %}
     <div class="checkbox">
         <label for="{{ form.remember_me.vars.id }}">{{ form_widget(form.remember_me) }} {{ form.remember_me.vars.label }}</label>
     </div>
@@ -32,4 +28,5 @@
         {{ form_widget(form.login_submit, {"attr": {"class": "btn btn-primary btn-lg btn-block"}}) }}
     </div>
 </form>
+
 {% endblock %}

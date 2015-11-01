@@ -28,18 +28,21 @@ class SecurityController extends AbstractController
         // get the login error if there is one
         $authErr = SecurityContextInterface::AUTHENTICATION_ERROR;
         if ($request->attributes->has($authErr)) {
-            $error = $request->attributes->get($authErr);
+            //$error = $request->attributes->get($authErr);
+            $errMsg = $this->getCfgParameter('login.err.auth_fail');
         } elseif (null !== $session && $session->has($authErr)) {
-            $error = $session->get($authErr);
+            //$error = $session->get($authErr);
             $session->remove($authErr);
+            $errMsg = $this->getCfgParameter('login.err.auth_fail');
         } else {
-            $error = null;
+            //$error = null;
+            $errMsg = null;
         }
         return $this->render(
                 'AdminBundle:Security:login.html.twig', 
                 array(
                     'form' => $form->createView(),
-                    'error'         => $error,
+                    'errMsg'  => $errMsg,
                 )
             );
     }

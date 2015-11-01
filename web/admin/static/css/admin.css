@@ -1,10 +1,19 @@
+/*------------------------------------------
+common styles
+------------------------------------------*/
 body {
-    background-color: #EEE;
+    background-color: #F6F6F6;
 }
+.header{
+    width: 100%;
+}
+/*------------------------------------------
+login page
+------------------------------------------*/
 .form-login {
     max-width: 330px;
     padding: 15px;
-    margin: 200px auto 0px;
+    margin: 150px auto 0px;
 }
 .form-login .checkbox {
     font-weight: normal;
@@ -27,4 +36,8 @@ body {
 .form-login input[type="password"] {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+.form-login .errmsg{
+    font-weight: bold;
+    padding: 10px;
 }
