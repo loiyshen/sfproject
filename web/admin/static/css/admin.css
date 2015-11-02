@@ -32,6 +32,7 @@ body {
 }
 .wrapper .content{
     background: #EFEFEF;
+    min-height: 500px;
 }
 /* // sidebar styles // */
 .sidebar{
@@ -88,12 +89,12 @@ body {
 }
 
 /*------------------------------------------
-login page
+/login
 ------------------------------------------*/
 .form-login {
     width: 350px;
     padding: 30px;
-    margin: 100px auto 0px;
+    margin: 100px auto;
 }
 .form-login .checkbox {
     font-weight: normal;
@@ -120,4 +121,20 @@ login page
 .form-login .errmsg{
     font-weight: bold;
     padding: 10px;
+}
+
+/*------------------------------------------
+/admin/list
+------------------------------------------*/
+.admin-list{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.admin-list table thead tr th{
+    background: #888;
+    color: #FFF;
+    border-bottom: 2px #333 solid;
+}
+.admin-list table thead tr td{
+    border-bottom: #CCC 1px solid;
 }

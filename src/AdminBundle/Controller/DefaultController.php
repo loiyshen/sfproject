@@ -15,12 +15,12 @@ class DefaultController extends AbstractController
     {
         $session = $this->container->get('session');
         $clientIp = $session->get('client_ip');
-        $loginUser = $this->getUser();
+        //get the current login user
+        //$loginUser = $this->getUser();
         
         return $this->render('AdminBundle:Default:index.html.twig',
                 array(
                     'client_ip' => $clientIp,
-                    'login_user' => $loginUser,
                 )
                 );
     }

@@ -13,38 +13,12 @@ class AbstractController extends Controller
     const FORM_NAMESPACE = "CommonBundle\Form\\";
 
     /**
-     * Error Page
-     */
-    public function errorAction()
-    {
-        $errorMsg = NULL;
-        $msgKey = $this->getRequest()->get('msgkey');
-        if($msgKey){
-            $errorMsg = $this->getCfgParameter($msgKey);
-        }
-        if(!$errorMsg){
-            $errorMsg = "That is an unknown error occur.";
-        }
-        return $this->render('AdminBundle::error.html.twig', compact('errorMsg'));
-    }
-
-    /**
-     * Redirect to an error page.
-     * @param  string  $msgKey The error message key
-     */
-    public function redirectToErrorPage($msgKey = '')
-    {
-        return $this->redirect($this->generateUrl('error', array('msgkey' => $msgKey)));
-    }
-
-    /**
-     * Fetches/creates the given services.
-     * A service in this context is connection or a manager instance.
+     * Get Entity Manager
      * 
      * @param string $name The name of the service(null for the default one).
      * @return object The instance of the given service.
      */
-    public function getServiceManager($name = NULL)
+    public function getEntityManager($name = NULL)
     {
         //$this->container->get('doctrine')->getManager($name);
         return $this->getDoctrine()->getManager($name);
@@ -58,10 +32,7 @@ class AbstractController extends Controller
      */
     public function getEntityRepository($entityName, $entityManagerName = NULL)
     {
-        $entityName = self::ENTITY_BUNDLE . ":{$entityName}";
-        $service = $this->getServiceManager($entityManagerName);
-        $entityRepository = $service->getRepository($entityName);
-        return $entityRepository;
+        return $this->container->get('doctrine')->getRepository($entityName, $entityManagerName);
     }
 
     /**

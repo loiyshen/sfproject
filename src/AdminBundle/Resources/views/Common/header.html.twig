@@ -9,7 +9,7 @@
     {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
     <div class="text-right">
         <div>
-            <span><abbr title="ID: {{ app.user.getId() }}, Account: {{ login_user.getAccount() }}">{{ app.user.getNickname() }}</abbr> | </span> 
+            <span><abbr title="ID: {{ app.user.getId() }}, Account: {{ app.user.getAccount() }}">{{ app.user.getNickname() }}</abbr> | </span> 
             <a href="{{ path('adm_logout') }}">Logout</a>
         </div>
     </div>
