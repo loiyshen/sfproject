@@ -18,11 +18,11 @@ class SecurityController extends AbstractController
     {
         $request = $this->getRequest();
         $formBuilder = $this->createFormBuilder(null, array( 'csrf_protection' => false ))
-                ->add('account', 'text',array( 'label'=>'Your Username', 'required'=>true ))
-                ->add('passwd', 'password',array( 'label'=>'Your Password', 'required'=>true ))
-                ->add('remember_me', 'checkbox',array( 'label'=>'Remember me in 2 weeks.' ,'required'=>false ))
-                ->add('login_submit', 'submit',array('label'=>'Login'));
-        
+                ->add('account', 'text',array( 'label' => $this->getCfgParameter('login.text.account'), 'required'=>true ))
+                ->add('passwd', 'password',array( 'label' =>  $this->getCfgParameter('login.text.passwd'), 'required'=>true ))
+                ->add('remember_me', 'checkbox',array( 'label' => $this->getCfgParameter('login.text.remember_me'),'required'=>false ))
+                ->add('login_submit', 'submit',array('label' => $this->getCfgParameter('login.text.login_submit')));
+        //get the form
         $form = $formBuilder->getForm();
         $session = $request->getSession();
         // get the login error if there is one
@@ -38,6 +38,7 @@ class SecurityController extends AbstractController
             //$error = null;
             $errMsg = null;
         }
+        //render template
         return $this->render(
                 'AdminBundle:Security:login.html.twig', 
                 array(

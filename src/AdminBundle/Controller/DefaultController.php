@@ -15,7 +15,6 @@ class DefaultController extends AbstractController
     {
         $session = $this->container->get('session');
         $clientIp = $session->get('client_ip');
-        //$loginUser = $session->get('login_user');
         $loginUser = $this->getUser();
         
         return $this->render('AdminBundle:Default:index.html.twig',
@@ -24,14 +23,5 @@ class DefaultController extends AbstractController
                     'login_user' => $loginUser,
                 )
                 );
-    }
-
-    /**
-     * Admin Login
-     * @return template
-     */
-    public function loginAction()
-    {
-        return $this->render('AdminBundle:Default:login.html.twig');
     }
 }

@@ -78,7 +78,7 @@ class AdminLoginSuccessHandler implements AuthenticationSuccessHandlerInterface
          * 取得当前登录的User对象
          */
          $user = $token->getUser();
-         $session->set('login_user', $user);
+         //$session->set('login_user', $user);
 
         /** 
          * User和Admin其实是一样的，通过 $user 来取得 Admin 的实例

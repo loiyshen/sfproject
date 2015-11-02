@@ -6,9 +6,10 @@
 
 {% block title %}Login - Admin{% endblock %}
 
-{% block content %}
 
+{% block wrapper %}
 
+<div class="col-md-12">
 <form class="form-login" action="{{path('adm_login_check')}}" method="post">
     <h2>Please Login:</h2>
     <input type="hidden" name="_csrf_token" value="{{ csrf_token('_csrf_token_id') }}" />
@@ -28,5 +29,6 @@
         {{ form_widget(form.login_submit, {"attr": {"class": "btn btn-primary btn-lg btn-block"}}) }}
     </div>
 </form>
+</div>
 
 {% endblock %}

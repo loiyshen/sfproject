@@ -1,0 +1,9 @@
+### The Const will be defined here.
+### e.g. Common Text, Error Message
+parameters:
+    #// Login:
+    login.text.account: Your Username
+    login.text.passwd: Your Password
+    login.text.remember_me: Remember me in 2 weeks.
+    login.text.login_submit: Login
+    login.err.auth_fail: Your Username/Password is Invalid.

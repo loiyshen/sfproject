@@ -1,9 +1,14 @@
-# This file is auto-generated during the composer install
+### The Common/Global Parameters for Frontend & Admin
+### (This file will be imported by the [parameters.yml] for Frontend.)
 parameters:
+    ### Mail server setting
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
+    ### Local Language
     locale: en
+    ### The secret key for symfony security (40 bit)
     secret: 9aa426da5e16d717055100f7becca6b02644d8c8
+    ### The Secret Key for Mcrypt (should be 16/24/32 bit)
     mcrypt_secret: 3JldE9mQ291cGFy0X3NlY3JldF9rZXkx

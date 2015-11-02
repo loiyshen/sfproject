@@ -4,10 +4,10 @@
 #}
 {% extends "::base.html.twig" %}
 
-{% block title %}Admin Layout Title{% endblock %}
+{% block title %}Admin - Symfony 2.3 Demo{% endblock %}
 {% block meta_tags %}
-<meta name="Keywords" content="" />
-<meta name="description" content="" />
+<meta name="Keywords" content="Symfony,Symfony Demo, Symfony 2.3 Application" />
+<meta name="description" content="The Admin Bundle of the Symfony 2.3 Application." />
 {% endblock %}
 {% block common_stylesheets %}
 <link rel="stylesheet" href="{{ asset('/static/css/bootstrap.css') }}" />
@@ -24,26 +24,38 @@
 
 <script type="text/javascript" src="{{ asset('/static/js/jquery-1.11.3.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/static/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/static/js/common.js') }}"></script>
+<script type="text/javascript">
+cur_route = '{{ path(app.request.attributes.get('_route')) }}';
+</script>
 {% endblock %}
 {% block other_javascripts %}{% endblock %}
 
 {% block body %}
 <div class="container">
-    <div class="header" id="header">
-        {% block header %}{% endblock %}
+    <div class="header row" id="header">
+        {% block header %}
+            {{ include('AdminBundle::Common/header.html.twig') }}
+        {% endblock %}
     </div>
 
-    <div class="wrap">
-        <div class="sidebar">
-            {% block sidebar %}{% endblock %}
-        </div>
-        <div class="content">
-            {% block content %}{% endblock %}
-        </div>
+    <div class="wrapper row">
+        {% block wrapper %}
+            <div class="sidebar col-md-3">
+                {% block sidebar %}
+                    {{ include('AdminBundle::Common/sidebar.html.twig') }}
+                {% endblock %}
+            </div>
+            <div class="content col-md-9">
+                {% block content %}{% endblock %}
+            </div>
+        {% endblock %}
     </div>
 
-    <div class="footer" id="header">
-        {% block footer %}{% endblock %}
+    <div class="footer" id="footer">
+        {% block footer %}
+            {{ include('AdminBundle::Common/footer.html.twig') }}
+        {% endblock %}
     </div>
 </div>
 {% endblock %}

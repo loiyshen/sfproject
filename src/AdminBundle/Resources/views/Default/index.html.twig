@@ -10,8 +10,8 @@
 {% block content %}
     
     <h1>The Home Page</h1>
-    <div><a href="/login">Login</a></div>
-    <div><a href="/logout">Logout</a></div>
+    <div><a href="{{ path('adm_login') }}">Login</a></div>
+    <div><a href="{{ path('adm_logout') }}">Logout</a></div>
     <h2>Client IP: {{ client_ip }}</h2>
     <div style="color:red;">
         <div>Login user from Token:</div> 

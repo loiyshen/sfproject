@@ -46,6 +46,7 @@ class AbstractController extends Controller
      */
     public function getServiceManager($name = NULL)
     {
+        //$this->container->get('doctrine')->getManager($name);
         return $this->getDoctrine()->getManager($name);
     }
 
