@@ -14,7 +14,10 @@ class AdminController extends AbstractController
      */
     public function listAction($page)
     {
-        return $this->render('AdminBundle:Admin:list.html.twig',  compact('page'));
+        
+        return $this->render('AdminBundle:Admin:list.html.twig',  array(
+            'page' => $page
+        ));
     }
 
     /**

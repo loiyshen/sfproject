@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundles\FrontendBundle\Util;
+namespace CommonBundle\Utils;
 
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Doctrine\ORM\QueryBuilder;

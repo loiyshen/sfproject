@@ -5,21 +5,20 @@ namespace CommonBundle\EntityRepository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Query;
-#use CommonBundle\Util\DoctrinePager;
-#use CommonBundle\Util\SQLPager;
+use CommonBundle\Utils\DoctrinePager;
+use CommonBundle\Utils\SQLPager;
 
 class AbstractRepository extends EntityRepository
 {
 
     const ENTITY_BUNDLE = "CommonBundle";
 
-    protected $container;
     protected $nowDate;
-
-    public function init($container)
-    {
-        $this->container = $container;
-    }
+    
+    /**
+     * @var Query
+     */
+    protected $query;
 
     /**
      * Gets the EntityRepository for an entity.
@@ -29,7 +28,6 @@ class AbstractRepository extends EntityRepository
     public function getRepository($entityName)
     {
         $entityName = self::ENTITY_BUNDLE . ":{$entityName}";
-
         return $this->getEntityManager()->getRepository($entityName);
     }
 
@@ -146,15 +144,5 @@ class AbstractRepository extends EntityRepository
         $sqlPagerDataList = $this->getSQLPagerData($sql,$countSql,$where);
         $sqlPagerDataList->init();
         return $sqlPagerDataList;
-    }
-    
-    /**
-     * Get Container
-     *
-     * @return Container
-     */
-    public function getContainer()
-    {
-        return $this->container;
     }
 }

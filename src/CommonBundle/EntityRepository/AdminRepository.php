@@ -22,119 +22,38 @@ class AdminRepository extends AbstractRepository
      */
     public function getAdminList($where = NULL)
     {
-        $query = $this->getAdminQuery($where);
-        return $this->getPagerDataArrayList($query, $where);
+        $this->initAdminQuery($where);
+        return $this->query->getArrayResult();
     }
 
     /**
-     * get QueryBuilder
-     * @return QueryBuilder $query
+     * init query
      */
-    public function getAdminQuery($where = NULL)
+    public function initAdminQuery($where = NULL)
     {
-        $query = $this->createQueryBuilder('a')
-        ->select('a.id as adminId, a.account, a.adminName, a.role, ep.id as enterpriseId, ep.name enterpriseName, COUNT(ap.id) as parkingCount')
-        ->leftJoin('a.enterprise', 'ep','with',"(ep.deletedAt IS NULL or ep.deletedAt = '0000-00-00 00:00:00')")
-        ->leftJoin('a.adminPark', 'ap','with',"(ap.deletedAt IS NULL or ap.deletedAt = '0000-00-00 00:00:00')")
-        ->where("a.deletedAt IS NULL or a.deletedAt = '0000-00-00 00:00:00'")
-        ->groupBy('a.id');
+        $this->query = $this->createQueryBuilder('a')
+        ->select('a.adminId, a.account, a.nickname, a.role, a.createdAt, a.updatedAt')
+        ->where("a.deletedAt IS NULL");
         if ($where && is_array($where)) {
             foreach ($where as $key => $value) {
-                if ($key && ($value || $value === 0)) {
-                    switch ($key) {
-                        case 'not_super_admin':
-                            $query->andWhere("a.account != '" . $value . "'");
-                            break;
-                    }
-                }
+                $this->addWhereToQuery($key, $value);
             }
         }
-        return $query;
     }
-
-    /**
-     * 管理者詳細情報
-     * @param array $where  検索条件
-     * @return array
-     */
-    public function getAdminDetail($where = NULL)
-    {
-        $query = $this->getAdminQuery();
-        if ($where && is_array($where)) {
-            foreach ($where as $key => $value) {
-                if ($key && ($value || $value === 0)) {
-                    switch ($key) {
-                        case (is_numeric($value)):
-                            $query->andWhere("a." . $key . " = " . $value);
-                            break;
-                        case (is_string($value)):
-                            $query->andWhere("a." . $key . " = '" . $value . "'");
-                            break;
-                    }
-                }
+    
+    public function addWhereToQuery($key, $value){
+        if ($key!==null && $value!==null) {
+            switch ($key) {
+                case 'offset':
+                    $this->query->setFirstResult($value);
+                    break;
+                case 'max':
+                    $this->query->setMaxResults($value);
+                    break;
+                default :
+                    break;
             }
         }
-
-        return $this->getOneOrNullResult($query);
     }
 
-    /**
-     * 管理者詳細情報
-     * @param array $where  検索条件
-     * @return Administrator
-     */
-    public function getAdminObject($where = NULL)
-    {
-        $query = $this->createQueryBuilder('a')
-                ->select('a')
-                ->where("a.deletedAt IS NULL or a.deletedAt = '0000-00-00 00:00:00'");
-        if ($where && is_array($where)) {
-            foreach ($where as $key => $value) {
-                if ($key && ($value || $value === 0)) {
-                    switch ($key) {
-                        case (is_numeric($value)):
-                            $query->andWhere("a." . $key . " = " . $value);
-                            break;
-                        case (is_string($value)):
-                            $query->andWhere("a." . $key . " = '" . $value . "'");
-                            break;
-                    }
-                }
-            }
-        }
-        $object = $query->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
-        return $object;
-    }
-
-    /**
-     * save 管理者情報登録
-     * @param Admin $admin
-     * @param CommonBundle\EntityValidate\Admin $adminValidateEntity
-     * @return false|Kouza
-     */
-    public function save(Admin $admin, \CommonBundle\EntityValidate\Admin $adminValidateEntity)
-    {
-        $nowTime = Tool::getNowDateTime();
-        $admin = EntityHelper::getEntityInstance($admin, $adminValidateEntity);
-        $enterpriseId = $adminValidateEntity->getEnterpriseId();
-        if ($enterpriseId) {
-            $admin->setEnterprise($this->getRepository("Enterprise")->getObjectById($enterpriseId));
-        }
-
-        $admin->setUpdatedAt($nowTime);
-        $adminId = $admin->getId();
-        if (empty($adminId)) {
-            $admin->setCreatedAt($nowTime);
-        }
-
-        $em = $this->getEntityManager();
-        try {
-            $em->persist($admin);
-            $em->flush();
-        } catch (\Exception $e) {
-            return FALSE;
-        }
-
-        return $admin;
-    }
 }

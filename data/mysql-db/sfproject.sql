@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-10-27 11:30:05
+-- Generation Time: 2015-11-05 08:51:58
 -- 服务器版本： 5.6.26
 -- PHP Version: 5.6.12
 
@@ -35,14 +35,20 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '更新时间',
   `deleted_at` datetime DEFAULT NULL COMMENT '删除时间'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='管理员表';
 
 --
 -- 转存表中的数据 `admin`
 --
 
 INSERT INTO `admin` (`admin_id`, `account`, `passwd`, `nickname`, `role`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'admin', 'yc/SvLxTHE3qzRFOUGYGbZ2MFCGZjkuImbRmF4jxfJA=', 'Admin-123456', 'ROLE_SUPER_ADMIN', '2015-10-27 08:28:24', '2015-10-27 08:28:24', NULL);
+(1, 'admin', 'yc/SvLxTHE3qzRFOUGYGbZ2MFCGZjkuImbRmF4jxfJA=', 'Loiy Shen', 'ROLE_SUPER_ADMIN', '2015-10-27 08:28:24', '2015-10-27 08:28:24', NULL),
+(2, 'admin2', 'yc/SvLxTHE3qzRFOUGYGbZ2MFCGZjkuImbRmF4jxfJA=', 'Loiy2', 'ROLE_ADMIN', '2015-10-31 08:28:24', '2015-10-31 08:28:24', NULL),
+(3, 'admin3', 'yc/SvLxTHE3qzRFOUGYGbZ2MFCGZjkuImbRmF4jxfJA=', 'Loiy3', 'ROLE_ADMIN', '2015-11-01 08:28:24', '2015-11-01 08:28:24', NULL),
+(4, 'admin4', 'yc/SvLxTHE3qzRFOUGYGbZ2MFCGZjkuImbRmF4jxfJA=', 'Loiy4', 'ROLE_ADMIN', '2015-11-02 08:28:24', '2015-11-02 08:28:24', NULL),
+(5, 'admin5', 'yc/SvLxTHE3qzRFOUGYGbZ2MFCGZjkuImbRmF4jxfJA=', 'Loiy5', 'ROLE_ADMIN', '2015-11-03 08:28:24', '2015-11-03 08:28:24', NULL),
+(6, 'admin6', 'yc/SvLxTHE3qzRFOUGYGbZ2MFCGZjkuImbRmF4jxfJA=', 'Loiy6', 'ROLE_ADMIN', '2015-11-04 08:28:24', '2015-11-04 08:28:24', NULL),
+(7, 'admin7', 'yc/SvLxTHE3qzRFOUGYGbZ2MFCGZjkuImbRmF4jxfJA=', 'Loiy7', 'ROLE_ADMIN', '2015-11-05 08:28:24', '2015-11-05 08:28:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -85,7 +91,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=2;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `post`
 --
